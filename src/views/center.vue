@@ -1,4 +1,5 @@
 <template>
+    <!-- 个人中心 -->
     <div class="box">
         <div class="header">
             <div class="logo">

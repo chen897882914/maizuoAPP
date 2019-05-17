@@ -1,9 +1,11 @@
 <template>
     <!-- 即将热映列表 -->
     <div class="box">
+        <!-- 导入Tap栏组件 -->
         <tap path = 'soonplaying'></tap>
+        <!-- Vant组件 作用为页面加载 -->
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh" class="gray">
-
+            <!-- 即将热映的电影列表 -->
             <div class="center" v-for="item in films" :key="item.filmId">
                 <img :src="item.poster" alt="">
                 <ul class="content">
@@ -40,18 +42,23 @@ export default {
         this.getList()
     },
     methods:{
+        // 获取后台数据
         getList(){
             let url = '/film/getList?type=2';
+            // 在获取到数据之前打开页面加载
             this.$loading()
             this.axios.get(url).then(res =>{
+                // 在获取到数据之后关闭页面加载
                 this.$clear()
                 console.log(res)
                 this.films = res.data.films
             }).catch(err =>{
                 console.log(err)
+                // 获取数据失败也将关闭页面加载
                 this.$clear();
             })
         },
+        // 下拉刷新列表
         onRefresh() {
       setTimeout(() => {
         this.$toast('刷新成功');

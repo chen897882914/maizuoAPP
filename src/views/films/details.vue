@@ -1,6 +1,8 @@
 <template>
+<!-- 电影详情 -->
   <div class="box">
     <div class="header">
+      <!-- 绑定图片 -->
       <img :src="dateils.poster" />
       <router-link to="/" class="iconfont icon-xiazai6 story"></router-link>
     </div>
@@ -8,9 +10,14 @@
     <div class="center">
       <div class="basic">
         <p class="basic-name">
-          <span>{{ dateils.name }}</span><span>{{ dateils.filmType }}</span><span>{{ Number(dateils.grade).toFixed(1) }}</span><span>分</span>
+          <span>{{ dateils.name }}</span>
+          <span>{{ dateils.filmType }}</span>
+          <!-- 将数据类型转义为数字类型并保留一位小数 -->
+          <span>{{ Number(dateils.grade).toFixed(1) }}</span>
+          <span>分</span>
         </p>
         <p>{{ dateils.category }}</p>
+        <!-- 过滤器:全局过滤器在filters/index.js中 -->
         <p>{{ dateils.premiereAt | filterTime }}上映</p>
         <p>{{ dateils.nation }} | {{ dateils.runtime }}分钟</p>
       </div>
@@ -69,23 +76,31 @@ export default {
     this.getDetails()
   },
   methods:{
+    //获取后台数据
     getDetails(){
+      //获取通过路由传递的参数
       let filmId = this.$route.params.Id;
+      //拼接数据接口与参数
       let url = `/film/getDetail?filmId=${filmId}`;
       this.axios.get(url).then(res=>{
         // console.log(res)
+        //将获取的后台数据赋值给dateils
         this.dateils = res.data.film
       })
     },
   },
 }
 </script>
-<style lang="css" scoped>
+
+<style lang="css" scoped>  /* scoped属性是让该组件的样式只作用于这一个组件,不会影响其他组件 */
+/* 跟标签的样式 */
 .box { background-color: #f5f5f5; width: 100%; }
+/* 头部样式 */
 .header { position: relative; }
+/* 头部图片的样式 */
 .header>img { width: 100%; margin-top: -340px; }
 .story { position: absolute; top: 10px; left: 10px; background: #fff; width: 25px; height: 25px; text-align: center; line-height: 25px; border-radius: 50%; background: rgba(0, 0, 0, 0.2); color: #fff; font-size: 10px; }
-
+/* 电影详情样式 */
 .center { background-color: #fff; padding: 20px 16px 0; }
 .basic { height: 90px; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 20px; }
 .basic>p { font-size: 13px; color: #797d82; }
@@ -95,7 +110,7 @@ export default {
 .basic-name>span:nth-child(3) { font-size: 18px; color: #ffb232; font-style: italic; flex-grow: 1; text-align: right; }
 .basic-name>span:last-child { font-size: 10px; color: #ffb232; margin-left: 3px; }
 .center>p { font-size: 13px; color: #797d82; padding-bottom: 10px;}
-
+/* 演职人员部分样式 */
 .performer { margin-top: 10px; background-color: #fff; width: 100%; overflow-x: hidden; }
 .performer>p { font-size: 16px; color: #191a1b; height: 56px; line-height: 56px; margin-left: 16px; }
 
@@ -113,6 +128,6 @@ export default {
 .picture-flex { display: flex; overflow-y: hidden; margin-right: 10px; margin-bottom: 60px;}
 .picture { width: 150px; height: 100px; margin-left: 10px; }
 .picture>img { width: 150px; height: 100px;}
-
+/* 页脚 */
 .footer { width: 100%; position: fixed; bottom: 0; background-color: #ff5f16; height: 49px; text-align: center; line-height: 49px; color: #fff;}
 </style>

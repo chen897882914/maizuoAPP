@@ -2,6 +2,7 @@
     <!-- 导航 -->
         <div class="received">
             <router-link to="/film/nowplaying" >
+            <!-- 动态的绑定样式 通过路由来判断 -->
                 <p class="size" :class="{tapActive : path === 'nowplaying'}">正在热映</p>
             </router-link>
 

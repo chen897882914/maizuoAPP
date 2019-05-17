@@ -1,9 +1,11 @@
 <template>
     <!-- 正在热映列表 -->
     <div class="box">
+        <!-- 导入的TAp栏组件 -->
         <Tap path = 'nowplaying'></Tap>
+        <!-- Vant组件 作用为页面加载 -->
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh" class="gray">
-            
+            <!-- 正在上映的列表 -->
             <div v-for="item in films" :key="item.filmId">
                 <router-link :to="`/details/${item.filmId}`" class="center">
                     <img :src="item.poster" alt="">
@@ -42,18 +44,23 @@ export default {
         this.getList()
     },
     methods:{
+        // 获取后台数据
         getList(){
             let url = "/film/getList?type=1";
+            // 在获取到数据之前打开页面加载
             this.$loading()
             this.axios.get(url).then(res=>{
+                // 在获取到数据之后关闭页面加载
                 this.$clear();
                 // console.log(res);
                 this.films = res.data.films;
             // eslint-disable-next-line no-unused-vars
             }).catch(err =>{
+                // 获取数据失败也要关闭页面加载
                 this.$clear();
             })
         },
+        // 下拉刷新
         onRefresh() {
         setTimeout(() => {
             this.$toast('刷新成功');

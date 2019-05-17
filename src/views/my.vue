@@ -1,4 +1,5 @@
 <template>
+    <!-- 个人中心 -->
     <div class="box">
         <div class="header">
             <div class="logo">
@@ -58,10 +59,14 @@ export default {
     },
 
     methods:{
+        // 设置点击事件函数
         setLogin(){
+            // 通过isLogin的状态来判断用户是否已经登录
             if(!this.isLogin){
+                // 未登录将跳转到login页面
                 this.$router.push('/login')
             } else{
+                // 已登录将跳转到设置页面
                 this.$router.push('/setUp')
             }
         },
@@ -81,6 +86,8 @@ export default {
         background: #f4f4f4;
         height: 667px;
     }
+
+    /* 头部样式 */
     .header{
         height: 156px;
         background-image: url("../imgs/header-bg.png");
