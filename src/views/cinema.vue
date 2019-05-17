@@ -1,4 +1,5 @@
 <template>
+    <!-- 影院页面 -->
     <div class="box">
         <div class="header">
             <div class="header-inn">
@@ -74,10 +75,13 @@ export default {
         this.getList()
     },
     methods:{
+        //获取数据
         getList(){
             let url = '/cinema/getList';
+            //在获取数据前打开页面加载
             this.$loading();
             this.axios.get(url).then(res =>{
+                //在获取完数据后关闭页面加载
                 this.$clear();
                 // console.log(res)
             this.cinemaList = res.data.cinemas;
@@ -100,11 +104,16 @@ export default {
             this.isActiveAll = false;
             //切换区域所对应的影院
             if(index === -1) {
+                //如果index等于-1时,将所有城市赋值给allList
                 this.allList = this.cinemaList;
+                //区域区将显示全城
                 this.region = '全城';
             } else {
+                //否则将全部城市过滤出来
                 this.allList = this.cinemaList.filter(cinema =>{
+                //区域区将显示所点击的区域
                 this.region = name;
+                //返回影院区域名与点击的区域名相同的所有影院
                 return cinema.districtName === name;
                 })
             }

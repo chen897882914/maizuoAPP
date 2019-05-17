@@ -1,4 +1,5 @@
 <template>
+  <!-- 电影订单详情 -->
   <div class="box">
     <!-- 点单详情 -->
     <div class="header">
@@ -92,9 +93,13 @@ export default {
   },
 
   methods: {
+    //获取数据
     getList(){
+      //获取通过动态路由传过来的参数
       let filmId = this.$route.params.Id;
+      //在浏览器中提取储存的sessionToken
       let sessionToken = localStorage.getItem('sessionToken');
+      //在浏览器中提取储存的电话号码
       let phone = localStorage.getItem('phone');
       this.phone = phone;
       let url = `/order/getDetail?sessionToken=${sessionToken}&orderId=${filmId}`;

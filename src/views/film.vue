@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <!-- 轮播图 -->
+        <!-- 轮播图组件 -->
         <van-swipe :autoplay="3000" class="swipe">
             <van-swipe-item v-for="(image, index) in banners" :key="index">
                 <img :src="image.imgUrl" style="width:100%;" />
@@ -30,7 +30,7 @@ export default {
     },
     methods:{
         getList(){
-            let url = '/film/getList?';
+            let url = '/film/getList';
             this.axios.get(url).then(res =>{
                 // console.log('res',res)
                 this.banners = res.data.banners

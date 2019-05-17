@@ -1,4 +1,5 @@
 <template>
+    <!-- 电影订单列表 -->
     <div class="box">
         <div class="name">
             <i class="iconfont icon-xiazai6" @click="topOut"></i>
@@ -66,10 +67,6 @@ export default {
                 this.orderList = res.data.orders
             })
         },
-
-
-
-
         topOut() {
             this.$router.go(-1)
         }

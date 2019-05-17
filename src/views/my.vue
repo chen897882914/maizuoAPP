@@ -71,9 +71,12 @@ export default {
             }
         },
         getOrder(){
+            //通过isLogin的状态来判断用户是否已经登录
             if(!this.isLogin){
+                //用户未登录将跳转至登录界面
                 this.$router.push('/login')
             } else {
+                //用户已登录将跳转至电影订单列表
                 this.$router.push('/orderList')
             }
         }

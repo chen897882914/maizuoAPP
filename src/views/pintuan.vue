@@ -1,4 +1,5 @@
 <template>
+    <!-- 拼团页面 -->
     <div class="box">
         <div class="center">
             <img src="@/imgs/pintuan1.jpg" alt="">

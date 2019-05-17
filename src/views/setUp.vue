@@ -1,4 +1,5 @@
 <template>
+    <!-- 设置页面 -->
     <div class="box">
         <div class="name">
             <i class="iconfont icon-xiazai6" @click="getTop"></i>
@@ -52,10 +53,15 @@ export default {
         }
     },
     methods:{
+        //退出登录事件
         loginOut(){
+            //在退出登录时将改变登录的状态
             this.$store.commit('updateLogin',false);
+            //将用户的电话号码清空
             this.$store.commit('updatePhone','');
+            //退出并跳转至未登录的个人中心
             this.$router.push('/my');
+            //清楚在浏览器中储存的数据
             localStorage.clear();
         },
         

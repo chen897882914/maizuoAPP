@@ -1,4 +1,5 @@
 <template>
+<!-- 城市页面 -->
     <div class="box">
         <div class="header">
             <div class="name">
