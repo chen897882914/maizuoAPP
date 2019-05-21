@@ -85,8 +85,8 @@ export default {
                 this.$clear();
                 // console.log(res)
             this.cinemaList = res.data.cinemas;
+            console.log(this.cinemaList)
             this.allList = res.data.cinemas;
-            // eslint-disable-next-line no-unused-vars
             }).catch(err =>{
                 this.$clear();
             })
@@ -114,7 +114,7 @@ export default {
                 //区域区将显示所点击的区域
                 this.region = name;
                 //返回影院区域名与点击的区域名相同的所有影院
-                return cinema.districtName === name;
+                return cinema.areaName === name;
                 })
             }
             
@@ -125,11 +125,11 @@ export default {
         ...mapGetters(['cityName']),
         regionList(){
             let list = this.cinemaList.map(region =>{
-                return region.districtName;
+                return region.areaName;
             });
             let set = new Set(list);
             let newSet = [...set];
-            // console.log(newSet)
+            console.log('newSet',newSet)
             return newSet;
         }
     }
