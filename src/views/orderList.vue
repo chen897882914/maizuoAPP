@@ -63,7 +63,7 @@ export default {
             // console.log(sessionToken)
             let url = `/order/getList?sessionToken=${sessionToken}`;
             this.axios.get(url).then(res =>{
-                console.log(res)
+                // console.log(res)
                 this.orderList = res.data.orders
             })
         },

@@ -85,7 +85,7 @@ export default {
                 this.$clear();
                 // console.log(res)
             this.cinemaList = res.data.cinemas;
-            console.log(this.cinemaList)
+            // console.log(this.cinemaList)
             this.allList = res.data.cinemas;
             }).catch(err =>{
                 this.$clear();
@@ -129,7 +129,7 @@ export default {
             });
             let set = new Set(list);
             let newSet = [...set];
-            console.log('newSet',newSet)
+            // console.log('newSet',newSet)
             return newSet;
         }
     }
